@@ -13,6 +13,68 @@ O **AnaliseCredito** é uma aplicação voltada para o controle e acompanhamento
 *   **Gestão de Empréstimos e Pagamentos**: Registro de novos empréstimos por cliente e acompanhamento/realização do pagamento das parcelas (`RealizarPgtoWidget`).
 *   **Perfil do Usuário**: Exibição e edição das informações do usuário logado no sistema.
 
+## 🗄️ Estrutura do Banco de Dados
+O backend utiliza PostgreSQL (via Supabase) com foco em integridade referencial. Abaixo, o Diagrama de Entidade-Relacionamento (ER) do sistema:
+
+```mermaid
+erDiagram
+    usuarios ||--o{ emprestimos : "possui (idUsuario)"
+    emprestimos ||--o{ parcelas : "gera (idEmprestimo)"
+
+    etapaValores {
+        int8 id PK
+        timestamp created_at
+        float8 valorLimite
+        varchar descricao
+    }
+
+    usuarios {
+        int8 id PK
+        timestamp created_at
+        varchar nome
+        varchar telefone
+        bool status
+        float8 valorTotal
+        float8 confianca
+        float8 lucro
+        varchar situacao
+    }
+
+    users {
+        int8 id PK
+        timestamp created_at
+        varchar email
+        varchar nome
+        varchar telefone
+        text imagem
+        bool status
+        varchar userID
+    }
+
+    emprestimos {
+        int8 id PK
+        timestamp created_at
+        int4 qtdeParcelas
+        float8 valorTotal
+        float8 lucro
+        int8 idUsuario FK
+        date dataVencimento
+        varchar userID
+        float8 juros
+        int8 qtdeParcelaPgo
+    }
+
+    parcelas {
+        int8 id PK
+        timestamp created_at
+        int8 idEmprestimo FK
+        int4 parcela
+        float8 valorParcela
+        bool statusPgto
+        date dataVencimento
+    }
+```
+
 ## 🏗️ Arquitetura e Estrutura de Diretórios
 
 O projeto utiliza a organização de pastas padrão gerada e exportada pelo FlutterFlow. A navegação base e a gestão de estado dependem da associação do pacote `GoRouter`, `Provider` (AppState) e do próprio `State` gerenciado nativamente pelo FlutterFlow.
