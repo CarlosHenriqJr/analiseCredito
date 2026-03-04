@@ -50,7 +50,7 @@ Siga os seguintes passos para configuração:
 1. Clone o projeto para o seu diretório local ou abra via IDE (VSCode / Android Studio).
 2. Acesse a pasta raiz do projeto atravéz do terminal:
    ```bash
-   cd c:/Users/carlo/Downloads/analise_credito
+   cd caminho/do/seu/projeto
    ```
 3. Instale todas as dependências atreladas no `pubspec`:
    ```bash
