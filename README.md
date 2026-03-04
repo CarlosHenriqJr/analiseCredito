@@ -1,6 +1,6 @@
 # AnaliseCredito
 
-Um sistema completo de análise de crédito e gerenciamento de empréstimos, desenvolvido com **Flutter** e **FlutterFlow**, utilizando integração com **Supabase** como backend.
+Um aplicativo simples de análise de crédito e gerenciamento de empréstimos, desenvolvido com **Flutter** e **FlutterFlow**, utilizando integração com **Supabase** como backend.
 
 ## 📱 Sobre o Projeto
 
